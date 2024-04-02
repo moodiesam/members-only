@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+    h1= title 
+    if messageboard_list.length 
+        ul 
+            each message in messageboard_list 
+                li 
+                    h4 #{message.title}
+                    h6 #{message.author.fullName}
+                    p #{message.text}
+                    hr
+
+    else 
+        p There are no messages 
