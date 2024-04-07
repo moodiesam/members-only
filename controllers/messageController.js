@@ -5,12 +5,13 @@ const asyncHandler = require("express-async-handler");
 // Homepage will show all messages
 exports.index = asyncHandler(async (req, res, next) => {
     // Should display all messages in reverse timestamp date
+    const currentUser = req.user;
     const allMessages = await Message.find({})
         // .sort({ timestamp: 1 })
         .populate("author")
         .exec();
 
-    res.render("messageboard_list", { title: "Messageboard", messageboard_list: allMessages })
+    res.render("messageboard_list", { title: "Messageboard", messageboard_list: allMessages, currentUser: currentUser })
 })
 
 // Display Message create form on GET

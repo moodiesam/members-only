@@ -26,6 +26,13 @@ html(lang='en')
                 a(href='/messageboard/user/create') Create new user
               li
                 a(href='/messageboard/message/create') Write new message
+              li 
+                hr
+              li 
+                a(href='/messageboard/user/logout') Log Out
 
         div(class='col-sm-10')
+          if currentUser 
+            h4 Welcome #{currentUser.fullName}
+
           block content
