@@ -30,7 +30,13 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(session({ 
+  secret: "cats", 
+  resave: false, 
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 5 // Five minutes
+  } }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate('session'))

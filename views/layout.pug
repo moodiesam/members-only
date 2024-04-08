@@ -16,8 +16,6 @@ html(lang='en')
             ul(class='sidebar-nav')
               li
                 a(href='/messageboard') Home
-              li
-                a(href='/messageboard/users') All Users
               li 
                 a(href='/messageboard/user/login') Log In
               li
@@ -32,7 +30,5 @@ html(lang='en')
                 a(href='/messageboard/user/logout') Log Out
 
         div(class='col-sm-10')
-          if currentUser 
-            h4 Welcome #{currentUser.fullName}
-
+          
           block content

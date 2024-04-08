@@ -64,12 +64,13 @@ router.post("/user/create", user_controller.user_create_post);
 router.get("/user/login", user_controller.user_login_get);
 router.post("/user/login", passport.authenticate('local', {successRedirect: '/', failureRedirect: '/messageboard/user/login'}));
 
-// GET and POST to logout user
+// GET to logout user
 
 router.get("/user/logout", user_controller.user_logout_get);
 
-// GET list of all users
+// GET and POST to delete message
 
-router.get("/users", user_controller.user_list);
+router.get("/message/:id/delete", message_controller.message_delete_get);
+router.post("/message/:id/delete", message_controller.message_delete_post);
 
 module.exports = router

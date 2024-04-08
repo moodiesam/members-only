@@ -1,0 +1,21 @@
+extends layout 
+
+block content 
+
+    h1 #{title}
+
+    h3 Hi #{currentUser.fullName}!
+
+    form(method='POST')
+        div.form-group
+            label(for='title') Message title: 
+            input#messageTitle.form-control(type='text', name='title', required)
+        div.form-group
+            label(for='message') New Message: 
+            input#message.form-control(type='textarea', name='message', required)
+        button.btn.btn-primary(type='submit') Post Message 
+
+    if errors 
+        ul 
+            for error in errors 
+                li!= error.msg

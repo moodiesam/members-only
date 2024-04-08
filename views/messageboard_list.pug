@@ -3,13 +3,22 @@ extends layout
 block content 
 
     h1= title 
+
+    if currentUser 
+            h4 Welcome #{currentUser.fullName}
+
+
     if messageboard_list.length 
         ul 
             each message in messageboard_list 
                 li 
                     h4 #{message.title}
-                    h6 #{message.author.fullName}
+                    if currentUser 
+                        h6 #{message.author.fullName}
                     p #{message.text}
+                    if currentUser
+                        if currentUser.membershipStatus === "admin"
+                            a(href=message.url+'/delete') Delete Message
                     hr
 
     else 
